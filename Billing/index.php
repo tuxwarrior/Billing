@@ -20,10 +20,10 @@ and open the template in the editor.
                         <form action="index.php" name="ingreso">
                             <fieldset>
                             <strong>Usuario: </strong>
-                            <input type="text" name="usuario">
+                            <input type="text" name="usuario" required="usuario">
                             <br>
                             <Strong>Contraseña: </strong>
-                            <input type="text" name="password">
+                            <input type="password" name="password" required="password">
                             <input type="submit" name="btnenviar" value="Entrar">
                             </fieldset>
                         </form>

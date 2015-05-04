@@ -1,0 +1,61 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05-04-2015, 03:11:32 PM
+    Author     : ulises
+*/
+
+
+
+
+body{
+    background: #226666;
+    color: #003333;
+    
+}
+
+h1{
+    padding: 15px;
+}
+
+h2{
+    padding: 15px;
+    color: #003333;
+    
+}
+
+#header{
+    
+    margin: 50px auto;
+    width: 300px;
+    background: #88B8B8;
+    border-radius: 10px;
+    border: 2px solid #88B8B8;
+}
+
+
+
+#login{
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 300px;
+    background: #88B8B8;
+    
+}
+
+
+form fieldset{
+    border: 2px solid #88B8B8;
+    border-radius: 10px;
+    
+}
+
+form fieldset a:hover{ text-decoration: underline;}
+.btn-round{
+    background-color: #006655;
+    
+    
+}

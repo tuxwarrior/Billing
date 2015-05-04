@@ -7,24 +7,27 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="CSS/style.css"
         <title></title>
     </head>
     <body>
-        <div name="header">
-            <h1>Acceder</h1>
-            <h2>Ingrese usuario y contrase&ntilde;a</h2>
+        <div id="header">
+            <!--<p><h1>Acceder</h1></p>-->
+            <p><h2>Ingrese usuario y contrase&ntilde;a</h2></p>
         </div>
-                <div name="contenido">
+                <div id="contenido">
                     <div id="login">
 
-                        <form action="index.php" name="ingreso">
+                        <form action="login.php" name="ingreso" method="POST">
                             <fieldset>
-                            <strong>Usuario: </strong>
-                            <input type="text" name="usuario" required="usuario">
-                            <br>
-                            <Strong>Contraseña: </strong>
-                            <input type="password" name="password" required="password">
-                            <input type="submit" name="btnenviar" value="Entrar">
+                                   
+                                <p><strong>Usuario: </strong></p>
+                                <p><input type="text" name="usuario" required="usuario"></p>
+                                
+                                <p><Strong>Contraseña: </strong></p>
+                                <p><input type="password" name="password" required="password"></p>
+                               
+                            <input type="submit" id="btnenviar" value="Entrar">
                             </fieldset>
                         </form>
                     </div>
@@ -32,8 +35,5 @@ and open the template in the editor.
         <div name="footer">
             
         </div>
-        <?php
-        
-        ?>
     </body>
 </html>

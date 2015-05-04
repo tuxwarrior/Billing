@@ -1,5 +1,8 @@
 <?php
-echo $_POST["usuario"];
-echo $_POST["password"];
+$usuario=$_POST["usuario"];
+$contra_normal=$_POST["password"];
+
+
+
 
 ?>

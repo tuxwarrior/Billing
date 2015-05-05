@@ -30,7 +30,14 @@ include('CONF/config.inc');
         </div>
                 <div id="contenido">
                     <div id="tablita">
-                        <table border="3">
+                        <table>
+                            <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Contraseña</th>
+                            <th>Privilegio</th>
+                            <th>Salt</th>
+                            </tr>
                     <?php
                         $querydatos= 'SELECT * FROM ingreso';
 
@@ -51,6 +58,10 @@ include('CONF/config.inc');
                         
                         ?>
                         </table>
+                        <form action="creadorcsv.php" method="POST">
+                            <input type="submit" value="Descargar Tabla">
+                        </form>
+                        
                     </div>
                 </div>
         <div name="footer">

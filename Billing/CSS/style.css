@@ -93,10 +93,23 @@ a{
     
 }
 
-#tablita{
-    background: #ffffff;
-    border-radius: 3px;
-    width: auto;
+table,th,td{
     
+    background:white;
+    border:1px solid black;
+        
+    
+}
+
+table{
+    border-collapse: collapse;
+    font-family: monospace;
+    
+}
+
+th{
+    color: white;
+    background:grey;
+    font-family: sans-serif;
     
 }

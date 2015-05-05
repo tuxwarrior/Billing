@@ -6,6 +6,9 @@ if (!isset($_SESSION['usuario'])) {
 header('Location: index.php');
 }
 
+include('CONF/config.inc');
+
+
 
 ?>
 
@@ -18,16 +21,36 @@ header('Location: index.php');
     </head>
     <body>
         <div id="header">
-            <!--<p><h1>Acceder</h1></p>-->
+            
             <p><h2>Billing</h2></p>
         </div>
         <div id="links">
             <a href="registro.php">Agregar Usuario</a>
+            <a href="salir.php">Salir</a>
         </div>
                 <div id="contenido">
-                    <div id="login">
+                    <div id="tablita">
+                        <table border="3">
+                    <?php
+                        $querydatos= 'SELECT * FROM ingreso';
 
+                        $resultseti=mysqli_query($conn,$querydatos);
                         
+                        
+                        
+                        while($row=mysqli_fetch_assoc($resultseti)){
+                               echo "<tr>";
+                               echo "<td>".$row["idUsuario"]."</td>";
+                               echo "<td>".$row['usuario']."</td>";
+                               echo "<td>".$row['contrasena']."</td>";
+                               echo "<td>".$row['privilegio']."</td>";
+                               echo "<td>".$row['salita']."</td>";
+                               echo "</tr>";  
+                        }
+                        mysqli_free_result($resultseti);
+                        
+                        ?>
+                        </table>
                     </div>
                 </div>
         <div name="footer">

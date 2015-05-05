@@ -27,6 +27,8 @@ h2{
     
 }
 
+
+
 #header{
     
     margin: 50px auto;
@@ -46,6 +48,15 @@ h2{
     
 }
 
+#aduser{
+    border-radius: 10px;
+    background: #88B8B8;
+    width: 300px;
+    margin: 50px auto;
+    
+}
+
+
 
 form fieldset{
     border: 2px solid #88B8B8;
@@ -56,6 +67,36 @@ form fieldset{
 form fieldset a:hover{ text-decoration: underline;}
 .btn-round{
     background-color: #006655;
+    
+    
+}
+
+#links{
+    
+   border-radius: 5px;
+   background: #88B8B8;
+   margin: 20px auto;
+   padding: 5px;
+   spacing: 5px; 
+   width: 32em;
+   text-align: center;    
+}
+
+a{
+    
+    color: #003366;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+
+#tablita{
+    background: #ffffff;
+    border-radius: 3px;
+    width: auto;
     
     
 }

@@ -1,3 +1,19 @@
+<?php
+    if(isset($_POST['btnenviar'])){
+        $usuario = $_POST['usuario'];
+        $password = $_POST['password'];
+        
+        if($usuario && $password)
+        {
+            setcookie("authorization","ok");
+            header("Location:login.php");
+            exit();
+        }
+    }
+
+
+
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -18,16 +34,16 @@ and open the template in the editor.
                 <div id="contenido">
                     <div id="login">
 
-                        <form action="login.php" name="ingreso" method="POST">
+                        <form  method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                             <fieldset>
                                    
                                 <p><strong>Usuario: </strong></p>
-                                <p><input type="text" name="usuario" required="usuario"></p>
+                                <p><input type="text" name="usuario"></p>
                                 
                                 <p><Strong>Contraseña: </strong></p>
-                                <p><input type="password" name="password" required="password"></p>
+                                <p><input type="password" name="password"></p>
                                
-                            <input type="submit" id="btnenviar" value="Entrar">
+                            <input type="submit" name="btnenviar" value="Entrar">
                             </fieldset>
                         </form>
                     </div>

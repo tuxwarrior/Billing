@@ -1,8 +1,8 @@
 <?php
 
 $servername='localhost';
-$username='validacion';
-$password='1ngr3s0'; //base de pruebas
+$dbusername='validacion';
+$dbpassword='1ngr3s0'; //base de pruebas
 $database='validacion';
 
 

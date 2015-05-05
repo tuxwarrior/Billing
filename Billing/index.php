@@ -1,17 +1,5 @@
 <?php
-    if(isset($_POST['btnenviar'])){
-        $usuario = $_POST['usuario'];
-        $password = $_POST['password'];
-        
-        if($usuario && $password)
-        {
-            setcookie("authorization","ok");
-            header("Location:login.php");
-            exit();
-        }
-    }
-
-
+//nada aun
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +11,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="CSS/style.css"
+        <link rel="stylesheet" type="text/css" href="CSS/style.css">
         <title></title>
     </head>
     <body>
@@ -34,7 +22,7 @@ and open the template in the editor.
                 <div id="contenido">
                     <div id="login">
 
-                        <form  method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                        <form  method="POST" action="validar.php">
                             <fieldset>
                                    
                                 <p><strong>Usuario: </strong></p>

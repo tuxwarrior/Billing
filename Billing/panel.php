@@ -86,7 +86,7 @@ include('CONF/config.inc');
                                echo "<td>".$row['userfield']."</td>";
                                echo "<td>".$row['uniqueid']."</td>";
                                echo "<td>".$row['recvip']."</td>";
-                               echo "<td>".$row['usragent']."</td>";
+                               echo "<td>".$row['useragent']."</td>";
                                echo "<td>".$row['ipsrc']."</td>";
                                echo "<td>".$row['osrc']."</td>";
                                echo "<td>".$row['odst']."</td>";

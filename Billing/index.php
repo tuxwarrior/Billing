@@ -2,7 +2,24 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/style.css">
-        <title></title>
+        <script>
+            function validarForm() {
+                var x = document.forms["login"]["usuario"].value;
+                var n = document.forms["login"]["password"].value;
+                
+                if(x == null | x == ""){
+                    alert("Debe llenar el campo usuario");
+                    return false;
+                }else{
+                    if(n == null | n == ""){
+                        alert("Debe llenar el campo contraseña");
+                        return false;
+                    }
+                }
+                
+            }
+        </script>
+        <title>Inicio de Sesión</title>
     </head>
     <body>
         <div id="header">
@@ -12,7 +29,7 @@
                 <div id="contenido">
                     <div id="login">
 
-                        <form  method="POST" action="validar.php">
+                        <form  name="login"  method="POST" action="validar.php" onsubmit="return validarForm()">
                             <fieldset>
                                    
                                 <p><strong>Usuario: </strong></p>

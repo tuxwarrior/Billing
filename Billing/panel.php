@@ -25,7 +25,7 @@ include('CONF/config.inc');
             <p><h2>Billing</h2></p>
         </div>
         <div id="links">
-            <a href="registro.php">Agregar Usuario</a>
+            <a href="registro.html">Agregar Usuario</a>
             <a href="salir.php">Salir</a>
         </div>
                 <div id="contenido">

@@ -8,16 +8,35 @@ header('Location: index.php');
 
 include('CONF/config.inc');
 
+$dateStart = new DateTime($_POST['datepicker1']);
+$timeStart = $_POST['tiempo_inicio'];
+
+$fdateStart = $dateStart->format('Y-m-d');
+
+echo $fdateStart . " " .$timeStart;
+
+
+
 
 
 ?>
 
-
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="CSS/style.css"
-        <title></title>
+        <link rel="stylesheet" type="text/css" href="CSS/style.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+        <script type="text/javascript">
+            $('.datepick').each(function()){
+                $(this).datepicker();
+            }
+        </script>
+        <title>Consulta de CDR</title>
     </head>
     <body>
         <div id="header">
@@ -29,6 +48,16 @@ include('CONF/config.inc');
             <a href="salir.php">Salir</a>
         </div>
                 <div id="contenido">
+                    <div id="form">
+                        <form name="formuconsu" method="POST" action="<?php echo $_SERVER_PHP['SELF'];  ?>">
+                            <input type="text" class="datepick" name="datepicker1" id="fecha1" value=''>                            
+                            <input type="text" id="tiempo_inicio" name="tiempo_inicio" value="00:00:00">
+                            <input id="datepick" name="datepicker2" class="datepick">
+                            <input type="text" id="tiempo_fin" name="tiempo_fin"  value="23:59:59">
+                            <input type="submit">
+                        </form>
+                        
+                    </div>
                     <div id="tablita">
                         <table>
                             <tr>

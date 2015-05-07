@@ -1,8 +1,22 @@
+<?php
+
+    session_start();
+    if($_SESSION['incorrecto'] == 'si'){
+        echo"<h3 style='color:red;background:white;font-family: sans-serif;'>CONTRASEÑA INCORRECTA</h3>";
+        unset($_SESSION['incorrecto']);
+    }
+       
+
+?>
+
+
 <html>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/style.css">
         <script>
+                     
+            
             function validarForm() {
                 var x = document.forms["login"]["usuario"].value;
                 var n = document.forms["login"]["password"].value;

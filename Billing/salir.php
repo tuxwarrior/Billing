@@ -5,6 +5,7 @@ session_start();
 
 // Delete certain session
 unset($_SESSION['usuario']);
+unset($_SESSION['incorrecto']);
 // Delete all session variables
 // session_destroy();
 

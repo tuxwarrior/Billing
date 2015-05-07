@@ -19,6 +19,7 @@ else
     {
     //deportar al inicio si la contraseña es incorrecta
      header("Location:index.php");
+     $_SESSION['incorrecto'] = 'si' ;
      
     }
     mysqli_free_result($result);

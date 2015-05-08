@@ -8,6 +8,8 @@ header('Location: index.php');
 
 include('CONF/config.inc');
 
+
+
 $dateStart = new DateTime($_POST['from']);
 $timeStart = $_POST['tiempo_inicio'];
 $dateEnd = new DateTime($_POST['to']);
@@ -16,9 +18,13 @@ $timeEnd = $_POST['tiempo_fin'];
 $fdateStart = $dateStart->format('Y-m-d');
 $fdateEnd  = $dateEnd->format('Y-m-d');
 
-echo $fdateStart . " " .$timeStart;
+$Inicio=$fdateStart." ".$timeStart;
 echo "<br>";
-echo $fdateEnd . " " .$timeEnd;
+$fin=$fdateEnd." ".$timeEnd;
+
+
+
+$querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' ";
 
 
 
@@ -112,8 +118,8 @@ echo $fdateEnd . " " .$timeEnd;
                             <th>sell</th>
                             </tr>
                     <?php
-                        $querydatos= 'SELECT * FROM cdr limit 30';
-
+                        
+                    
                         $resultseti=mysqli_query($conn,$querydatos);
                         
                         

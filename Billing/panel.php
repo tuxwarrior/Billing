@@ -10,6 +10,8 @@ include('CONF/config.inc');
 
 
 
+$num_rec_page=10;
+
 $dateStart = new DateTime($_POST['from']);
 $timeStart = $_POST['tiempo_inicio'];
 $dateEnd = new DateTime($_POST['to']);
@@ -25,7 +27,6 @@ $fin=$fdateEnd." ".$timeEnd;
 
 
 $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' ";
-
 
 
 
@@ -119,8 +120,16 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' ";
                             </tr>
                     <?php
                         
-                    
+                        //QUERY
                         $resultseti=mysqli_query($conn,$querydatos);
+                        
+                        //conseguir numero de registros
+                        $cantidad="SELECT COUNT(accountcode) FROM cdr";
+                        
+                        
+                        
+                        
+                        
                         
                         
                         

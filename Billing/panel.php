@@ -2,17 +2,12 @@
 
 session_start();
 
-if (!isset($_SESSION['usuario'])) {
+if (!isset($_SESSION['usuario']) and !($_SESSION['privilegio'] == 1)) {
 header('Location: index.php');
 }
 
 include('CONF/config.inc');
 
-
-if(!isset($pagenum)){
-    
-     $pagenum=1;
-}
 
 
 
@@ -30,7 +25,7 @@ $fin=$fdateEnd." ".$timeEnd;
 
 
 
-$querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' $max ";
+$querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIMIT 10";
 
 
 
@@ -131,20 +126,7 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' $ma
                         
                         $filas= mysqli_num_rows($resulseti);
                         
-                        $filasMostrar=10;
                         
-                        $ultimo = ceil($filas/$filasMostrar);
-                        
-                        
-                        
-                        if($pagenum < 1){
-                            $pagenum = 1;
-                        }
-                        elseif($pagenum>$ultimo){
-                            $pagenum=$ultimo;
-                        }
-                        
-                        $max= 'limit' .($pagenum -1) * $filasMostrar .',' .$filasMostrar;
                        
                         
                          
@@ -196,45 +178,9 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' $ma
                         </form>
                         
                     </div>
-                    <div id="paginas">
-                        <?php 
-                        echo "Página $pagenum de $ultimo<p>"; 
+                   
                         
-                        if($pagenum == 1){
-                            
-                        }else{
-                            echo " <a href='{$_SERVER['PHP_SELF']}?pagenum=1'> <<-Primero</a>";
-                            
-                            echo " ";
-                            
-                            $previo= $pagenum-1;
-                            echo "<a href='{$_SERVER['PHP_SELF']}?pagenum=$previo'><-Anterior</a>";
-                            
-                        }
-                        
-                        echo "------" ;
-                        
-                        if ($pagenum == $ultimo) 
-
-                         {
-
-                         } 
-
-                         else {
-
-                         $next = $pagenum+1;
-
-                         echo " <a href='{$_SERVER['PHP_SELF']}?pagenum=$next'>Siguiente -></a> ";
-
-                         echo " ";
-
-                         echo " <a href='{$_SERVER['PHP_SELF']}?pagenum=$ultimo'>Ultimo ->></a> ";
-
-                         }
-                        
-                        ?>
-                        
-                    </div>
+                    
                 </div>
         <div name="footer">
             

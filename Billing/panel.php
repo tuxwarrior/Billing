@@ -2,7 +2,7 @@
 
 session_start();
 
-if (!isset($_SESSION['usuario']) and !($_SESSION['privilegio'] == 1)) {
+if (!isset($_SESSION['usuario'])) {
 header('Location: index.php');
 }
 
@@ -25,11 +25,9 @@ $fin=$fdateEnd." ".$timeEnd;
 
 
 
-$querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIMIT 10";
-
-
-
-
+$querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin'";
+$querycount = "SELECT COUNT(calldate) from cdr BETWEEN '$Inicio' AND '$fin'";
+ 
 
 ?>
 
@@ -38,9 +36,11 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIM
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/style.css">
-         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+         <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+         <script src="//code.jquery.com/jquery-1.11.3.js"></script>
+         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+         <script src="Scripts/jquery-1.11.3.min.js" type="text/javascript"></script>
+         <!--
         <script type="text/javascript">
              $(function() {
                 $( "#from" ).datepicker({
@@ -60,7 +60,26 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIM
                         }
                     });
             });
-        </script>
+            
+            
+        </script>-->
+         <script type="text/javascript">
+         $(document).ready(function(){
+             $("#results").load("resultados.php");//Cargar los registros iniciales
+             
+             
+             //Cuando le den click a los links de paginado hara esto
+             $("#results").on("click",".paginado a", function(e){
+                 e.preventDefault();
+                 $("loading-div").show(); //muestra el loading mierda de youtube
+                 var pagina= $(this).attr("data-page"); //Consigue el numero de pagina del link
+                 $("#results").load("resultados.php",{"pagina":pagina}, function(){ //contenido de php
+                     $(".loading-div").hide();//esconde el loading
+                 });
+             });
+         });
+         
+         </script>
         <title>Consulta de CDR</title>
     </head>
     <body>
@@ -76,11 +95,11 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIM
                     <div id="form">
                         <form name="formuconsu" method="POST" action="<?php echo $_SERVER_PHP['SELF'];  ?>">
                             <p><label>Fecha inicio</label>
-                            <input id="from" type="text" class="from" name="from" />
+                            <input id="from" type="text" class="from" name="from" value="05-05-2015" />
                             <label>Hora inicio</label>
                             <input type="text" id="tiempo_inicio" name="tiempo_inicio" value="00:00:00">
                             <label>Fecha fin</label>
-                            <input id="to" type="text" class="to" name="to" />
+                            <input id="to" type="text" class="to" name="to" value="05-05-2015" />
                             <label>Hora fin</label>
                             <input type="text" id="tiempo_fin" name="tiempo_fin"  value="23:59:59"></p>
                             <input type="submit">
@@ -88,98 +107,17 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIM
                         
                     </div>
                     
-                    <div id="tablita">
-                        <table>
-                            <tr>
-                            <th>calldate</th>
-                            <th>clid</th>
-                            <th>src</th>
-                            <th>dst</th>
-                            <th>dcontext</th>
-                            <th>channel</th>
-                            <th>dstchannel</th>
-                            <th>lastapp</th>
-                            <th>lastdata</th>
-                            <th>duration</th>
-                            <th>billsec</th>
-                            <th>disposition</th>
-                            <th>amaflags</th>
-                            <th>accountcode</th>
-                            <th>userfield</th>
-                            <th>uniqueid</th>
-                            <th>recvip</th>
-                            <th>useragent</th>
-                            <th>ipsrc</th>
-                            <th>osrc</th>
-                            <th>odst</th>
-                            <th>oint</th>
-                            <th>type</th>
-                            <th>trfcst</th>
-                            <th>trfvnt</th>
-                            <th>cost</th>
-                            <th>sell</th>
-                            </tr>
-                    <?php
+                    <div class="loading-div"><img src="IMG/loading.gif" alt="Cargando..."></div>
+                    <div id="results">
                         
-                        //QUERY
-                        $resultseti=mysqli_query($conn,$querydatos) or die(mysqli_error($conn));
-                        
-                        $filas= mysqli_num_rows($resulseti);
-                        
-                        
-                       
-                        
-                         
-                        
-                        
-                        
-                        
-                        
-                        
-                        while($row=mysqli_fetch_assoc($resultseti)){
-                               echo "<tr>";
-                               echo "<td>".$row["calldate"]."</td>";
-                               echo "<td>".$row['clid']."</td>";
-                               echo "<td>".$row['src']."</td>";
-                               echo "<td>".$row['dst']."</td>";
-                               echo "<td>".$row['dcontext']."</td>";
-                               echo "<td>".$row['channel']."</td>";
-                               echo "<td>".$row['dstchannel']."</td>";
-                               echo "<td>".$row['lastapp']."</td>";
-                               echo "<td>".$row['lastdata']."</td>";
-                               echo "<td>".$row['duration']."</td>";
-                               echo "<td>".$row['billsec']."</td>";
-                               echo "<td>".$row['disposition']."</td>";
-                               echo "<td>".$row['amaflags']."</td>";
-                               echo "<td>".$row['accountcode']."</td>";
-                               echo "<td>".$row['userfield']."</td>";
-                               echo "<td>".$row['uniqueid']."</td>";
-                               echo "<td>".$row['recvip']."</td>";
-                               echo "<td>".$row['useragent']."</td>";
-                               echo "<td>".$row['ipsrc']."</td>";
-                               echo "<td>".$row['osrc']."</td>";
-                               echo "<td>".$row['odst']."</td>";
-                               echo "<td>".$row['oint']."</td>";
-                               echo "<td>".$row['type']."</td>";
-                               echo "<td>".$row['trfcst']."</td>";
-                               echo "<td>".$row['trfvnt']."</td>";
-                               echo "<td>".$row['cost']."</td>";
-                               echo "<td>".$row['sell']."</td>";
-                               echo "</tr>";  
-                        }
-                        
-                        
-                        
-                        
-                        ?>
-                        </table>
-                        <form action="creadorcsv.php" method="POST">
-                            <input type="submit" value="Descargar Tabla">
-                        </form>
+                        <!-- Aqui vamos a cargar la tablita -->
                         
                     </div>
-                   
-                        
+                    <div id="CSV">
+                    <form action="creadorcsv.php" method="POST">
+                            <input type="submit" value="Descargar Tabla">
+                        </form>
+                    </div> 
                     
                 </div>
         <div name="footer">

@@ -161,3 +161,14 @@ h3{
     a#paginas{
         color:#2222CC;
     }
+    
+    #lista{
+        background: #000033;
+        color: white;
+        list-style: none;
+        font-weight: bold;
+        margin-bottom: 10px;
+        float:bottom;
+        width:7%;
+        
+    }

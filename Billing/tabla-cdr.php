@@ -8,8 +8,6 @@ header('Location: index.php');
 
 include('CONF/config.inc');
 
-echo $_GET['id'];
-
 $start=0;
 $limit=20;
 
@@ -45,9 +43,6 @@ if(isset($_GET['id'])){
 $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIMIT $start, $limit";
 
 
-
-
-echo $querydatos;
 
 ?>
 <html>
@@ -150,7 +145,7 @@ echo $querydatos;
                             
                             
                             echo "<ul id='lista'>";
-                            echo "<li>Páginas";
+                            echo "<li><h4>Páginas</h4>";
                                 echo "<ul>";
                                 for($i=1;$i<=$total;$i++){
                                     if($i==id){ echo "<li class='current'>".$i."</li>";}

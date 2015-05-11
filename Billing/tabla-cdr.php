@@ -49,6 +49,8 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIM
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/style.css">
+        <script type='text/javascript' src='Scripts/jquery-1.11.3.min.js'></script>
+        <script type="text/javascript" language="javascript" src="Scripts/jquery.dropdown.js"></script>
     </head>
     <body>
             <div id="tablita">
@@ -143,20 +145,25 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIM
                                 echo "<a href='?id=".($id+1)."' class='boton'>Siguiente</a>";
                             }
                             
-                            
-                            echo "<ul id='lista'>";
+                            echo "<div class='numeros'>";
+                            /*echo "<ul id='lista'>";
                             echo "<li><h4>Páginas</h4>";
-                                echo "<ul>";
+                                echo "<ul>";*/
                                 for($i=1;$i<=$total;$i++){
-                                    if($i==id){ echo "<li class='current'>".$i."</li>";}
-
-                                    else{ echo "<li><a href='?id=".$i."'</a>".$i."</li>";}
-
+                                    if($i==id){/* echo "<li class='current'>".$i."</li>";*/
+                                        echo "<h3>".$i."</h3>";
                                 }
-                                
+                                        
+                                    else{ /*echo "<li><a href='?id=".$i."'>".$i."</a></li>";*/
+                                        echo "<a href='?id=".$i."'>".$i."</a>";
+                                    }
+                                    
+                                }
+                                /*
                             echo "</li></ul>";
                             echo "</ul>";    
-                            
+                            */
+                                echo "</div>";
                         ?>
                         
                     </div>

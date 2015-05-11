@@ -165,6 +165,12 @@ h3{
         color:#2222CC;
     }
     
+    div.numeros{
+        width: 300px;
+        height: 30px;
+        overflow: scroll;
+    }
+    
     
     /* Esto es para el menu de la tabla de cdr*/
     

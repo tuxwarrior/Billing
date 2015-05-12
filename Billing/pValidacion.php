@@ -49,7 +49,7 @@ session_start();
         sleep(10);
         header('Location registro.php');
     }else{
-        echo "<script>alert(".$colita['usuario'].")</script>";
+        
         $hashito = create_hash($nuevapass);
         $ingresar="INSERT INTO ingreso(usuario,contrasena,privilegio) VALUES('$nuevouser','$hashito','$privilegio')";
         mysqli_query($conn, $ingresar);

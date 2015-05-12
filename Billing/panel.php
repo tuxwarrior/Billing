@@ -6,32 +6,6 @@ if (!isset($_SESSION['usuario'])) {
 header('Location: index.php');
 }
 
-<<<<<<< HEAD
-=======
-include('CONF/config.inc');
-
-
-
-
-$dateStart = new DateTime($_POST['from']);
-$timeStart = $_POST['tiempo_inicio'];
-$dateEnd = new DateTime($_POST['to']);
-$timeEnd = $_POST['tiempo_fin'];
-
-$fdateStart = $dateStart->format('Y-m-d');
-$fdateEnd  = $dateEnd->format('Y-m-d');
-
-$Inicio=$fdateStart." ".$timeStart;
-echo "<br>";
-$fin=$fdateEnd." ".$timeEnd;
-
-
-
-$querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin'";
-$querycount = "SELECT COUNT(calldate) from cdr BETWEEN '$Inicio' AND '$fin'";
- 
-
->>>>>>> fc809414f94b3a83b1b75fdb30b4bb637b394991
 ?>
 
 <!DOCTYPE html>
@@ -39,11 +13,11 @@ $querycount = "SELECT COUNT(calldate) from cdr BETWEEN '$Inicio' AND '$fin'";
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/style.css">
-         <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
          <script src="//code.jquery.com/jquery-1.11.3.js"></script>
-         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
-         <script src="Scripts/jquery-1.11.3.min.js" type="text/javascript"></script>
-         <!--
+         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        
+       
         <script type="text/javascript">
              $(function() {
                 $( "#from" ).datepicker({
@@ -65,24 +39,8 @@ $querycount = "SELECT COUNT(calldate) from cdr BETWEEN '$Inicio' AND '$fin'";
             });
             
             
-        </script>-->
-         <script type="text/javascript">
-         $(document).ready(function(){
-             $("#results").load("resultados.php");//Cargar los registros iniciales
-             
-             
-             //Cuando le den click a los links de paginado hara esto
-             $("#results").on("click",".paginado a", function(e){
-                 e.preventDefault();
-                 $("loading-div").show(); //muestra el loading mierda de youtube
-                 var pagina= $(this).attr("data-page"); //Consigue el numero de pagina del link
-                 $("#results").load("resultados.php",{"pagina":pagina}, function(){ //contenido de php
-                     $(".loading-div").hide();//esconde el loading
-                 });
-             });
-         });
-         
-         </script>
+        </script>
+        
         <title>Consulta de CDR</title>
     </head>
     <body>
@@ -110,12 +68,8 @@ $querycount = "SELECT COUNT(calldate) from cdr BETWEEN '$Inicio' AND '$fin'";
                         
                     </div>
                     
-<<<<<<< HEAD
-=======
-                    <div class="loading-div"><img src="IMG/loading.gif" alt="Cargando..."></div>
-                    <div id="results">
-                        
-                        <!-- Aqui vamos a cargar la tablita -->
+
+                   
                         
                     </div>
                     <div id="CSV">
@@ -123,7 +77,7 @@ $querycount = "SELECT COUNT(calldate) from cdr BETWEEN '$Inicio' AND '$fin'";
                             <input type="submit" value="Descargar Tabla">
                         </form>
                     </div> 
->>>>>>> fc809414f94b3a83b1b75fdb30b4bb637b394991
+
                     
                 </div>
         <div name="footer">

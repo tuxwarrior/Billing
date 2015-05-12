@@ -20,12 +20,13 @@ fputcsv($output,$campos,";");
 
 $query=$_SESSION['query2'];
 
+
 $datoscsv= mysqli_query($conn, $query);
 
-echo $query;
 
-while($datoscsv = mysqli_fetch_assoc($datoscsv)){
-    fputcsv($output, $datoscsv,";");
+
+while($row = mysqli_fetch_assoc($datoscsv)){
+    fputcsv($output, $row,";");
 }
     fclose($output);
     mysqli_close($conn);

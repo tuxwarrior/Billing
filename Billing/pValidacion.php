@@ -55,7 +55,7 @@ session_start();
         mysqli_query($conn, $ingresar);
         echo"<script>alert('Se ha agregado con éxito');</script>";
         sleep(10);
-        //header('Location: registro.php');
+        header('Location: registro.php');
         
     }
     

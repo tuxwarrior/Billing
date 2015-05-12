@@ -90,6 +90,9 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIM
                         $resultseti=mysqli_query($conn,$querydatos) or die(mysqli_error($conn));
                         //cantidad registros
                         $query2="SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin'";
+                        
+                        $_SESSION['query2']=$query2;
+                        
                         $filas=  mysqli_num_rows(mysqli_query($conn,$query2));
                        
                         
@@ -146,24 +149,18 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIM
                             }
                             
                             echo "<div class='numeros'>";
-                            /*echo "<ul id='lista'>";
-                            echo "<li><h4>Páginas</h4>";
-                                echo "<ul>";*/
+                            
                                 for($i=1;$i<=$total;$i++){
-                                    if($i==id){/* echo "<li class='current'>".$i."</li>";*/
+                                    if($i==id){
                                         echo "<h3>".$i."</h3>";
                                 }
                                         
-                                    else{ /*echo "<li><a href='?id=".$i."'>".$i."</a></li>";*/
+                                    else{ 
                                         echo "<a href='?id=".$i."'>".$i."</a>";
                                     }
                                     
                                 }
-                                /*
-                            echo "</li></ul>";
-                            echo "</ul>";    
-                            */
-                                echo "</div>";
+                             echo "</div>";
                         ?>
                         
                     </div>

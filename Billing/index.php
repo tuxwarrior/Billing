@@ -1,10 +1,7 @@
 <?php
 
     session_start();
-    if($_SESSION['incorrecto'] == 'si'){
-        echo"<h3 style='color:red;background:white;font-family: sans-serif;'>CONTRASEÑA INCORRECTA</h3>";
-        unset($_SESSION['incorrecto']);
-    }
+    
        
 
 ?>
@@ -40,7 +37,11 @@
             <!--<p><h1>Acceder</h1></p>-->
             <h2>Ingrese usuario y contrase&ntilde;a</h2>
         </div>
-                
+           <?phpif($_SESSION['incorrecto'] == 'si'){
+                echo"<h3 style='color:red;background:white;font-family: sans-serif;'>No Existe el usuario o contraseña</h3>";
+                unset($_SESSION['incorrecto']);
+        }
+    ?>
                     <div id="login">
 
                         <form  name="login"  method="POST" action="validar.php" onsubmit="return validarForm()">

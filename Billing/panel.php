@@ -49,18 +49,23 @@ header('Location: index.php');
             <p><h2>Billing</h2></p>
         </div>
         <div id="links">
-            <a href="registro.html">Agregar Usuario</a>
+            <?php
+                if($_SESSION['privilegio']==1){
+                echo "<a href='registro.php'>Agregar Usuario</a>";
+                }
+            
+            ?>
             <a href="salir.php">Salir</a>
         </div>
                 <div id="contenido">
                     <div id="form">
                         <form name="formuconsu" method="POST" action="tabla-cdr.php">
                             <p><label>Fecha inicio</label>
-                            <input id="from" type="text" class="from" name="from" value="05-05-2015" />
+                            <input id="from" type="text" class="from" name="from"  />
                             <label>Hora inicio</label>
                             <input type="text" id="tiempo_inicio" name="tiempo_inicio" value="00:00:00">
                             <label>Fecha fin</label>
-                            <input id="to" type="text" class="to" name="to" value="05-05-2015" />
+                            <input id="to" type="text" class="to" name="to"  />
                             <label>Hora fin</label>
                             <input type="text" id="tiempo_fin" name="tiempo_fin"  value="23:59:59"></p>
                             <input type="submit">

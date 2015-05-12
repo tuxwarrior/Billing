@@ -1,5 +1,5 @@
 <?php
-    
+    //tabla ingreso
     session_start();
 
     if (!isset($_SESSION['usuario']) or ($_SESSION['privilegio'] != 1)) {

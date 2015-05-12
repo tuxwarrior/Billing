@@ -1,4 +1,6 @@
 <?php
+//Tabla ingreso
+
 
 session_start();
 
@@ -24,35 +26,41 @@ session_start();
         }
     
     
-    $nuevouser= $_POST['nuevouser'];
-    $nuevapass= $_POST['nuevapass'];
-    $repeticion= $_POST['repepass'];
-    $privilegio= $_POST['selecta'];
+    $nuevouser  = $_POST['nuevouser'];
+    $nuevapass  = $_POST['nuevapass'];
+    $repeticion = $_POST['repepass'];
+    $privilegio = $_POST['selecta'];
     
-    $query="select * from ingreso where usuario='$nuevouser'";
+    $consulta="SELECT usuario FROM ingreso WHERE usuario='$nuevouser'";
     
-    $result=  mysqli_query($conn, $query);
+    $resultado1=  mysqli_query($conn, $consulta);
+    $colita=  mysqli_fetch_row($resultado1);
     
-    if(mysqli_num_rows($result)>0){
-        echo"<script>alert('No se puede agregar nuevo usuario, ya existe');</script>";
-        header('Location registro.php');
-    }
-    
-  
     
     if($nuevapass != $repeticion){
-        echo "Las contraseñas no coinciden";
+        echo "<script>alert('Las contraseñas no coinciden')</script>";
+        sleep(10);
         header('Location: registro.php');
     }
     
     
-    $hashito = create_hash($nuevapass);
-            
+    if($colita[0]==$nuevouser){
+        echo"<script>alert('No se puede agregar nuevo usuario, ya existe');</script>";
+        sleep(10);
+        header('Location registro.php');
+    }else{
+        echo "<script>alert(".$colita['usuario'].")</script>";
+        $hashito = create_hash($nuevapass);
+        $ingresar="INSERT INTO ingreso(usuario,contrasena,privilegio) VALUES('$nuevouser','$hashito','$privilegio')";
+        mysqli_query($conn, $ingresar);
+        echo"<script>alert('Se ha agregado con éxito');</script>";
+        sleep(10);
+        //header('Location: registro.php');
+        
+    }
     
+  
     
-   $ingresar="INSERT INTO ingreso(usuario,contrasena,privilegio) VALUES('$nuevouser','$hashito','$privilegio')";
-   echo"<script>alert('Se ha agregado con éxito');</script>";
    
-   
-   mysqli_query($conn, $ingresar);
+    
     

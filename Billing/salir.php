@@ -1,5 +1,5 @@
 <?php
-
+//sin sql
 // Inialize session
 session_start();
 

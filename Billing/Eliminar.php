@@ -1,4 +1,5 @@
 <?php
+//tabla ingreso
     
     session_start();
 
@@ -7,6 +8,13 @@
     }
 
 
+    include('CONF/config.inc');
+    
+    $query='SELECT usuario FROM ingreso';
+    
+    $resultado=mysqli_query($conn, $query);
+    
+    
 
 
 ?>
@@ -17,41 +25,31 @@
         <link type="text/css" rel="stylesheet" href="CSS/style.css">
         <script>
             function validarForm2(){
-                var x2 = document.forms["crearuser"]["nuevouser"].value;
-                var y2 = document.forms["crearuser"]["nuevapass"].value;
-                var z  = document.forms["crearuser"]["repepass"].value; 
+                var x2 = document.forms["destroyuser"]["userelim"].value;
+                 
                 
                 if(x2 == null | x2 == ""){
                     alert("Debe llenar el campo usuario");
                     return false;
                 }else{
-                    if(y2 == null | y2 == ""){
-                        alert("Debe llenar el campo contraseña");
+                    var cancelar= confirm("Esta acción no se puede deshacer");
+                    if(cancelar == false){
                         return false;
-                    }else{
-                        if(z == null | z == ""){
-                            alert("Repita su contraseña");
-                            return false;
-                        }else{
-                            if(y2 != z){
-                                alert("Las contraseñas no coinciden");
-                                return false;
-                            }
-                        }
                     }
-                    
                 }
                 
                 
-                
+                    
             }
+                
+             
         </script>
-        <title>Agregar nuevo usuario</title>
+        <title>Eliminar Usuario</title>
     </head>
     <body>
         <div id="header">
             <!--<p><h1>Acceder</h1></p>-->
-            <h2>Agregar nuevo usuario</h2>
+            <h2>Eliminar Usuario</h2>
                    </div>
         <div id="links">
             
@@ -67,19 +65,18 @@
         </div>
                 <div id="contenido">
                     <div id="aduser">
-                        <form method="POST" action="pValidacion.php" name="crearuser" onsubmit="return validarForm2()">
+                        <form method="POST" action="Eliminar.php" name="destroyuser" onsubmit="return validarForm2()">
                             <fieldset>
-                                <p>Nuevo usuario: </p>
-                                <p><input type="text" name="nuevouser"> </p>
-                                <p> Contraseña: </p>
-                            <p>    <input type="password" name="nuevapass"> </p>
-                            <p> Repita la contraseña:</p>
-                            <p>   <input type="password" name="repepass"></p>
-                            <p> Nivel privilegio</p>
-                            <select required class="selecta" name="selecta">
-                                <option value="1" >BOFH</option>
-                                <option value="2">LUSER</option>
-                            </select>
+                                <p>Usuario a eliminar: </p>
+                                <select name="userelim">
+                                    <?php
+                                        while($row=mysqli_fetch_assoc($resultado)){
+                                            echo"<option value='".$row['usuario']."'>".$row['usuario']."</option>";
+                                        }
+                                    ?>
+                                </select>
+                                
+                                
                             <input type="submit" value="Enviar">
                             
                             </fieldset>

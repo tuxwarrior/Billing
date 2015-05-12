@@ -1,4 +1,6 @@
 <?php
+
+//tabla ingreso
 // iniciar sesion
 session_start();
 //incluir la conexion a base

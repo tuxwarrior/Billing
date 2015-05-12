@@ -1,4 +1,6 @@
 <?php
+//tabla cdr
+
 
 session_start();
 
@@ -98,7 +100,7 @@ $querydatos = "SELECT * FROM cdr WHERE calldate BETWEEN '$Inicio' AND '$fin' LIM
                         
                         while($row=mysqli_fetch_assoc($resultseti)){
                                echo "<tr>";
-                               echo "<td>".$row["calldate"]."</td>";
+                               echo "<td>".$row['calldate']."</td>";
                                echo "<td>".$row['clid']."</td>";
                                echo "<td>".$row['src']."</td>";
                                echo "<td>".$row['dst']."</td>";

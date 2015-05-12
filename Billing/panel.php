@@ -1,5 +1,5 @@
 <?php
-
+//sin sql
 session_start();
 
 if (!isset($_SESSION['usuario'])) {
@@ -84,8 +84,8 @@ header('Location: index.php');
                     </div> 
 
                     
-                </div>
-        <div name="footer">
+                
+        <div id="footer">
             
         </div>
     </body>

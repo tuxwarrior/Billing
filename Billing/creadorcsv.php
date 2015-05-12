@@ -1,5 +1,5 @@
 <?php 
-
+//tabla cdr
 include('CONF/config.inc');
 session_start();
 

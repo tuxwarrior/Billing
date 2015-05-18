@@ -77,11 +77,7 @@ header('Location: index.php');
                    
                         
                     </div>
-                    <div id="CSV">
-                    <form action="creadorcsv.php" method="POST">
-                            <input type="submit" value="Descargar Tabla">
-                        </form>
-                    </div> 
+                    
 
                     
                 
